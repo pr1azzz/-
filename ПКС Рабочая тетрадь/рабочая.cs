@@ -1,71 +1,59 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-namespace calculator
+
+namespace praktika
 {
- internal class Program
- {
- static void Main(string[] args)
- {
- float one, two, result;
-4
- char sign;
- Console.WriteLine("Добро пожаловать в калькулятор. Вам нелбходимо ввести
-первое число, затем знак действия(+,-,*,/), которое хотите совершить и второе
-число.");
- Console.Write("Введите первое число: ");
- one = Convert.ToSingle(Console.ReadLine());
- Console.Write("Введите знак действия : ");
- sign = Convert.ToChar(Console.ReadLine());
- Console.Write("Введите Второе число: ");
- two = Convert.ToSingle(Console.ReadLine());
- if (sign == '+')
- {
- result = one + two;
- Console.WriteLine("Сумма ваших чисел равна " + result);
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
- }
- else if (sign == '-')
- {
- result = one - two;
- Console.WriteLine("Разность ваших чисел равна " + result);
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
- }
- else if (sign == '*')
- {
- result = one * two;
- Console.WriteLine("Произведение ваших чисел равно " + result);
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
- }
- else if (sign == '/')
- {
- if (two == 0)
- {
- Console.WriteLine("Ошибка. Делитель не может быть равным нулю.");
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
- }
- else
- {
- result = one / two;
- Console.WriteLine("Частное ваших чисел равна " + result);
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
-5
- }
- }
- else
- {
- Console.WriteLine("Ошибка. Вы ввели неверный знак.");
- Console.WriteLine("Для выхода нажмите любую клавишу...");
- Console.ReadKey();
- }
- }
- }
-} 
+    class rab1
+    {
+        static void Main(string[] args)
+        {
+            string value;
+            do
+            {
+                int res;
+                Console.Write("Enter first number:");
+                int num1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter second number:");
+                int num2 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter symbol(/,+,-,*):");
+                string symbol = Console.ReadLine();
+                
+                switch (symbol)
+                {
+                    case "+":
+                        res = num1 + num2;
+                        Console.WriteLine("Addition:" + res);
+                        break;
+                    case "-":
+                        res = num1 - num2;
+                        Console.WriteLine("Subtraction:" + res);
+                        break;
+                    case "*":
+                        res = num1 * num2;
+                        Console.WriteLine("Multiplication:" + res);
+                        break;
+                    case "/":
+                        if (num2 != 0)
+                        {
+                            res = num1 / num2;
+                            Console.WriteLine("Division:" + res);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Division by zero!");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Wrong input");
+                        break;
+                }
+                
+                Console.ReadLine();
+                Console.Write("Do you want to continue(y/n):");
+                value = Console.ReadLine();
+            }
+            while (value == "y" || value == "Y");
+        }
+    }
+}
